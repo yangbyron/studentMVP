@@ -9,13 +9,17 @@ const client = new Client({
 });
 client.connect();
 app.use(cors());
+app.use(express.static('public'));
+app.get('/',(req,res)=>{
+    res.send('hello world');
+})
+
 app.get('/api/list',(req,res)=>{
     client.query('SELECT * FROM to_do_list;')
     .then((data)=>{
-        console.log(data.rows);
         res.send(data.rows);
     })
 })
 app.listen(PORT,()=>{
-    console.log('Listening on port', PORT);
+    console.log('Backend server is listening on port', PORT);
 })
