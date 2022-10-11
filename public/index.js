@@ -1,5 +1,5 @@
 //const url = 'http://localhost:3000/api/list';
-const url = 'https://to-do-list-db-api.onrender.com/api/list';
+const url = 'https://to-do-list-index-page.onrender.com/api/list';
 fetch(url)
     .then(response=>response.json())
     .then(data=>{
