@@ -1,5 +1,0 @@
-{
-    "dev": {
-        "connectionstring": "postgresql://postgres:docker@localhost:5432/studentmvp"
-    }
-}
