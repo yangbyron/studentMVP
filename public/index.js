@@ -1,10 +1,11 @@
-//const url = 'http://localhost:3000/api/list';
-const url = 'https://to-do-list-db-api.onrender.com/api/list';
+const url = 'http://localhost:3000/api/list';
+//const url = 'https://to-do-list-db-api.onrender.com/api/list';
 fetch(url)
     .then(response=>response.json())
     .then(data=>{
         console.log(data);
         let displayDiv = document.createElement('div');
+        displayDiv.className='displayDiv';
         let ol = document.createElement('ol');
         data.forEach(list => {
             let indexOfT = list.added_date.indexOf('T');
@@ -19,27 +20,16 @@ fetch(url)
             deleteButton.textContent='Delete';
             deleteButton.className=`delete`;
             deleteButton.id=list.id;
-            
             ol.append(li);
             ol.append(editButton);
             ol.append(deleteButton);
         });
         displayDiv.append(ol);
-        document.body.append(displayDiv);
-        let form = document.createElement('form');
-        let label = document.createElement('label');
-        label.textContent= 'Add to the list: ';
-        let input = document.createElement('input');
-        input.name='description';
-        let submit = document.createElement('input');
-        input.required=true;
-        submit.type='submit';
-        submit.disabled=true;
-        form.append(label);
-        form.append(input);
-        form.append(submit);
-        document.body.append(form);
+        let banner = document.getElementsByClassName('banner')[0];
+        banner.append(displayDiv);
         
+        let input=document.getElementsByName('description')[0];
+        let submit = document.getElementsByName('submit')[0];
         input.addEventListener('change',()=>{
             if(input.value===''){
                 submit.disabled=true;

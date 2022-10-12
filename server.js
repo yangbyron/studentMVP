@@ -13,7 +13,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/api/list',(req,res)=>{
-    client.query('SELECT * FROM to_do_list ORDER BY added_date ASC;')
+    client.query('SELECT * FROM to_do_list ORDER BY added_date ASC, id ASC;')
     .then((data)=>{
         res.send(data.rows);
     })
